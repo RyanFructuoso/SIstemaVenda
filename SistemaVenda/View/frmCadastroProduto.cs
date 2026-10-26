@@ -119,11 +119,12 @@ namespace SistemaVenda.View
                 MessageBox.Show("Produto Atualizado com sucesso",
                                 "Atualização do produto",
                                 MessageBoxButtons.OK, MessageBoxIcon.Information);
-            
-            limparCampos();
-            carregarProdutos();
-            this.btnAtualizar.Enabled = false;
-            this.btnExcluir.Enabled = false;
+
+                limparCampos();
+                carregarProdutos();
+                this.btnAtualizar.Enabled = false;
+                this.btnExcluir.Enabled = false;
+                produtoSelecionado = null;
             }
 
             else
@@ -150,7 +151,32 @@ namespace SistemaVenda.View
             this.txtquantidade.Value = produto.quantidade;
             produtoSelecionado = produto;
             this.btnAtualizar.Enabled = true;
+            this.btnExcluir .Enabled = true;
 
+        }
+
+        private void btnExcluir_Click(object sender, EventArgs e)
+        {
+            bool resp = controller.excluir(produtoSelecionado);
+
+            if (resp)
+            {
+                MessageBox.Show("Produto excluído com sucesso",
+                "Excluír",
+                MessageBoxButtons.OK, MessageBoxIcon.Information);
+                limparCampos();
+                carregarProdutos();
+                this.btnAtualizar .Enabled = false;
+                this.btnExcluir.Enabled = false;
+                produtoSelecionado = null;
+            }
+
+            else
+            {
+                MessageBox.Show("Erro ao excluír o produto",
+                "Excluír",
+                MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
     }
 }

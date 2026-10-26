@@ -159,6 +159,7 @@
             btnExcluir.TabIndex = 11;
             btnExcluir.Text = "Excluir";
             btnExcluir.UseVisualStyleBackColor = true;
+            btnExcluir.Click += btnExcluir_Click;
             // 
             // tabela
             // 
