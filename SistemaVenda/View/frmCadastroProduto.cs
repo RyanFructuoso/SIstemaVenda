@@ -17,6 +17,12 @@ namespace SistemaVenda.View
 
         private Product? produtoSelecionado;
 
+        private int totalDePaginas = 5;
+
+        private int paginaAtual = 1;
+
+        private int totalPorPagina = 5;
+
         public frmCadastroProduto()
         {
             InitializeComponent();
@@ -72,16 +78,24 @@ namespace SistemaVenda.View
 
         private void carregarProdutos()
         {
-            List<Product> list = controller.getAll();
+            List<Product> list = controller.listarPorPagina(totalPorPagina, paginaAtual);
             this.dgvProdutos.DataSource = list;
             this.dgvProdutos.Columns["id_funcionario"].Visible = false;
 
+            totalDePaginas = controller.quantidadePaginas(totalPorPagina);
+            if (paginaAtual > totalDePaginas)
+            {
+                paginaAtual = totalDePaginas;
+            }
+            atualizarLblPagina();
         }
 
         private void frmCadastroProduto_Load(object sender, EventArgs e)
         {
-            // fializar listar os produtos
+            // finalizar listar os produtos
             carregarProdutos();
+            //int paginas = controller.quantidadePaginas(5);
+            //lblPaginas.Text = $"1 de {paginas}";
         }
 
         private void limparCampos()
@@ -151,7 +165,7 @@ namespace SistemaVenda.View
             this.txtquantidade.Value = produto.quantidade;
             produtoSelecionado = produto;
             this.btnAtualizar.Enabled = true;
-            this.btnExcluir .Enabled = true;
+            this.btnExcluir.Enabled = true;
 
         }
 
@@ -166,7 +180,7 @@ namespace SistemaVenda.View
                 MessageBoxButtons.OK, MessageBoxIcon.Information);
                 limparCampos();
                 carregarProdutos();
-                this.btnAtualizar .Enabled = false;
+                this.btnAtualizar.Enabled = false;
                 this.btnExcluir.Enabled = false;
                 produtoSelecionado = null;
             }
@@ -177,6 +191,32 @@ namespace SistemaVenda.View
                 "Excluír",
                 MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
+        }
+
+        // Manipular as páginas
+        private void btnAnterior_Click(object sender, EventArgs e)
+        {
+            if (paginaAtual > 1)
+            {
+                paginaAtual--;
+                atualizarLblPagina();
+                carregarProdutos();
+            }
+        }
+
+        private void btnProximo_Click(object sender, EventArgs e)
+        {
+            if (paginaAtual < totalDePaginas)
+            {
+                paginaAtual++;
+                atualizarLblPagina();
+                carregarProdutos();
+            }
+        }
+
+        private void atualizarLblPagina()
+        {
+            this.lblPaginas.Text = $"Página {paginaAtual} de {totalDePaginas}";
         }
     }
 }

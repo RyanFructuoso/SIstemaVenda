@@ -42,6 +42,9 @@
             btnAtualizar = new Button();
             btnExcluir = new Button();
             tabela = new Label();
+            btnAnterior = new Button();
+            lblPaginas = new Label();
+            btnProximo = new Button();
             ((System.ComponentModel.ISupportInitialize)txtquantidade).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dgvProdutos).BeginInit();
             SuspendLayout();
@@ -170,11 +173,44 @@
             tabela.TabIndex = 12;
             tabela.Text = "Tabela de produtos";
             // 
+            // btnAnterior
+            // 
+            btnAnterior.Location = new Point(12, 622);
+            btnAnterior.Name = "btnAnterior";
+            btnAnterior.Size = new Size(81, 30);
+            btnAnterior.TabIndex = 13;
+            btnAnterior.Text = "< Anterior";
+            btnAnterior.UseVisualStyleBackColor = true;
+            btnAnterior.Click += btnAnterior_Click;
+            // 
+            // lblPaginas
+            // 
+            lblPaginas.Location = new Point(155, 616);
+            lblPaginas.Name = "lblPaginas";
+            lblPaginas.Size = new Size(426, 40);
+            lblPaginas.TabIndex = 14;
+            lblPaginas.Text = "Página 1 de 5";
+            lblPaginas.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // btnProximo
+            // 
+            btnProximo.Location = new Point(683, 619);
+            btnProximo.Name = "btnProximo";
+            btnProximo.Size = new Size(81, 33);
+            btnProximo.TabIndex = 15;
+            btnProximo.Text = "Próximo >";
+            btnProximo.UseVisualStyleBackColor = true;
+            btnProximo.Click += btnProximo_Click;
+            // 
             // frmCadastroProduto
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(776, 612);
+            BackColor = Color.Yellow;
+            ClientSize = new Size(783, 661);
+            Controls.Add(btnProximo);
+            Controls.Add(lblPaginas);
+            Controls.Add(btnAnterior);
             Controls.Add(tabela);
             Controls.Add(btnExcluir);
             Controls.Add(btnAtualizar);
@@ -215,5 +251,8 @@
         private Button btnAtualizar;
         private Button btnExcluir;
         private Label tabela;
+        private Button btnAnterior;
+        private Label lblPaginas;
+        private Button btnProximo;
     }
 }
