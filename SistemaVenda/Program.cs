@@ -11,13 +11,23 @@ internal static class Program
         ApplicationConfiguration.Initialize();
         //Application.Run(new frmCadastroProduto());
 
-        using (frmLogin login = new frmLogin())
+        while (true)
         {
-            if (login.ShowDialog() == DialogResult.OK)
+            using (frmLogin login = new frmLogin())
             {
-                Application.Run(new frmPrimary());
+                if (login.ShowDialog() != DialogResult.OK)
+                {
+                    break;
+                }
             }
-
+            using (frmPrimary primary = new frmPrimary())
+            {
+                Application.Run(primary);
+                if (primary.DialogResult != DialogResult.Retry)
+                {
+                    break;
+                } 
+            }
         }
     }
 }

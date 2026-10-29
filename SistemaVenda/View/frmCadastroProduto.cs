@@ -45,57 +45,58 @@ namespace SistemaVenda.View
                 quantidade = quantidade
             };
             // Enviar os dados para a controller
-            bool resp = controller.createProduct(product);
-            if (preco < 1)
+            try
             {
-                MessageBox.Show("Erro ao cadastrar o produto, preço inválido",
-                                "Atualização do produto",
-                                MessageBoxButtons.OK, MessageBoxIcon.Error);
+                bool resp = controller.createProduct(product);
 
-            }
-            else if (quantidade < 0)
+                if (resp)
+                {
+                    MessageBox.Show("Produto cadastrado com sucesso",
+                        "Cadastro Produto",
+                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    limparCampos();
+                    carregarProdutos();
+                }
+                else
+                {
+                    MessageBox.Show("Erro ao cadastrar Produto",
+                        "Cadastro Produto",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }catch (Exception ex)
             {
-                MessageBox.Show("Erro ao cadastrar o produto, quantidade inválida",
-                                "Atualização do produto",
-                                MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-
-            else if (resp)
-            {
-                MessageBox.Show("Produto cadastrado com sucesso",
-                    "Cadastro Produto",
-                    MessageBoxButtons.OK, MessageBoxIcon.Information);
-                limparCampos();
-                carregarProdutos();
-            }
-            else
-            {
-                MessageBox.Show("Erro ao cadastrar Produto",
-                    "Cadastro Produto",
+                // mostrar o porque deu erro
+                MessageBox.Show(ex.Message,
+                    "Erro no Produto",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
         private void carregarProdutos()
         {
-            List<Product> list = controller.listarPorPagina(totalPorPagina, paginaAtual);
-            this.dgvProdutos.DataSource = list;
-            this.dgvProdutos.Columns["id_funcionario"].Visible = false;
-
             totalDePaginas = controller.quantidadePaginas(totalPorPagina);
             if (paginaAtual > totalDePaginas)
             {
                 paginaAtual = totalDePaginas;
             }
+
             atualizarLblPagina();
+
+            List<Product> list = controller.listarPorPagina(totalPorPagina, paginaAtual);
+            this.dgvProdutos.DataSource = list;
+            this.dgvProdutos.Columns["id_funcionario"].Visible = false;
+
         }
 
         private void frmCadastroProduto_Load(object sender, EventArgs e)
         {
+            this.cbxQuantidadeItens.SelectedIndex = 0;
             // finalizar listar os produtos
             carregarProdutos();
             //int paginas = controller.quantidadePaginas(5);
             //lblPaginas.Text = $"1 de {paginas}";
+
+
         }
 
         private void limparCampos()
@@ -114,21 +115,7 @@ namespace SistemaVenda.View
             produtoSelecionado.quantidade = (int)this.txtquantidade.Value;
             bool resp = controller.atualizar(produtoSelecionado);
 
-            if (produtoSelecionado.preco < 1)
-            {
-                MessageBox.Show("Erro ao atualizar o produto, preço inválido",
-                                "Atualização do produto",
-                                MessageBoxButtons.OK, MessageBoxIcon.Error);
-
-            }
-            else if (produtoSelecionado.quantidade < 0)
-            {
-                MessageBox.Show("Erro ao atualizar o produto, quantidade inválida",
-                                "Atualização do produto",
-                                MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-
-            else if (resp)
+            if (resp)
             {
                 MessageBox.Show("Produto Atualizado com sucesso",
                                 "Atualização do produto",
@@ -217,6 +204,13 @@ namespace SistemaVenda.View
         private void atualizarLblPagina()
         {
             this.lblPaginas.Text = $"Página {paginaAtual} de {totalDePaginas}";
+        }
+
+        private void cbxQuantidadeItens_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            // capturar o número e recalcular as páginas
+            this.totalPorPagina = int.Parse(this.cbxQuantidadeItens.Text);
+            carregarProdutos();
         }
     }
 }

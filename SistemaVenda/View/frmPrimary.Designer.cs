@@ -32,12 +32,17 @@
             lblUsername = new Label();
             cadProduto = new Button();
             btnCadFuncionario = new Button();
+            panel2 = new Panel();
+            panel1 = new Panel();
+            painelPrincipal = new Panel();
+            btnSair = new Button();
+            panel2.SuspendLayout();
             SuspendLayout();
             // 
             // lblUsername
             // 
             lblUsername.AutoSize = true;
-            lblUsername.Location = new Point(279, 132);
+            lblUsername.Location = new Point(77, 85);
             lblUsername.Name = "lblUsername";
             lblUsername.Size = new Size(59, 15);
             lblUsername.TabIndex = 0;
@@ -46,7 +51,7 @@
             // 
             // cadProduto
             // 
-            cadProduto.Location = new Point(98, 113);
+            cadProduto.Location = new Point(23, 142);
             cadProduto.Name = "cadProduto";
             cadProduto.Size = new Size(158, 53);
             cadProduto.TabIndex = 2;
@@ -56,7 +61,7 @@
             // 
             // btnCadFuncionario
             // 
-            btnCadFuncionario.Location = new Point(360, 113);
+            btnCadFuncionario.Location = new Point(23, 264);
             btnCadFuncionario.Name = "btnCadFuncionario";
             btnCadFuncionario.Size = new Size(158, 53);
             btnCadFuncionario.TabIndex = 1;
@@ -64,14 +69,52 @@
             btnCadFuncionario.UseVisualStyleBackColor = true;
             btnCadFuncionario.Click += btnCadFuncionario_Click;
             // 
+            // panel2
+            // 
+            panel2.Controls.Add(btnSair);
+            panel2.Controls.Add(lblUsername);
+            panel2.Controls.Add(cadProduto);
+            panel2.Controls.Add(btnCadFuncionario);
+            panel2.Dock = DockStyle.Left;
+            panel2.Location = new Point(0, 0);
+            panel2.Name = "panel2";
+            panel2.Size = new Size(237, 685);
+            panel2.TabIndex = 4;
+            // 
+            // panel1
+            // 
+            panel1.Dock = DockStyle.Top;
+            panel1.Location = new Point(237, 0);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(799, 39);
+            panel1.TabIndex = 5;
+            // 
+            // painelPrincipal
+            // 
+            painelPrincipal.Dock = DockStyle.Fill;
+            painelPrincipal.Location = new Point(237, 39);
+            painelPrincipal.Name = "painelPrincipal";
+            painelPrincipal.Size = new Size(799, 646);
+            painelPrincipal.TabIndex = 6;
+            // 
+            // btnSair
+            // 
+            btnSair.Location = new Point(23, 609);
+            btnSair.Name = "btnSair";
+            btnSair.Size = new Size(158, 53);
+            btnSair.TabIndex = 3;
+            btnSair.Text = "Sair";
+            btnSair.UseVisualStyleBackColor = true;
+            btnSair.Click += btnSair_Click;
+            // 
             // frmPrimary
             // 
             AutoScaleDimensions = new SizeF(96F, 96F);
             AutoScaleMode = AutoScaleMode.Dpi;
-            ClientSize = new Size(646, 281);
-            Controls.Add(cadProduto);
-            Controls.Add(btnCadFuncionario);
-            Controls.Add(lblUsername);
+            ClientSize = new Size(1036, 685);
+            Controls.Add(painelPrincipal);
+            Controls.Add(panel1);
+            Controls.Add(panel2);
             Cursor = Cursors.Cross;
             FormBorderStyle = FormBorderStyle.Fixed3D;
             Icon = (Icon)resources.GetObject("$this.Icon");
@@ -79,8 +122,9 @@
             Name = "frmPrimary";
             Text = "Tela inicial";
             Load += frmPrimary_Load;
+            panel2.ResumeLayout(false);
+            panel2.PerformLayout();
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion
@@ -88,5 +132,9 @@
         private Label lblUsername;
         private Button cadProduto;
         private Button btnCadFuncionario;
+        private Panel panel2;
+        private Panel panel1;
+        private Panel painelPrincipal;
+        private Button btnSair;
     }
 }

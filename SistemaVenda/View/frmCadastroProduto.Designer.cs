@@ -45,6 +45,7 @@
             btnAnterior = new Button();
             lblPaginas = new Label();
             btnProximo = new Button();
+            cbxQuantidadeItens = new ComboBox();
             ((System.ComponentModel.ISupportInitialize)txtquantidade).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dgvProdutos).BeginInit();
             SuspendLayout();
@@ -83,7 +84,7 @@
             // 
             // btnCadProduto
             // 
-            btnCadProduto.Location = new Point(508, 28);
+            btnCadProduto.Location = new Point(518, 28);
             btnCadProduto.Name = "btnCadProduto";
             btnCadProduto.Size = new Size(102, 73);
             btnCadProduto.TabIndex = 4;
@@ -133,19 +134,19 @@
             dgvProdutos.AllowUserToDeleteRows = false;
             dgvProdutos.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvProdutos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvProdutos.Location = new Point(12, 135);
+            dgvProdutos.Location = new Point(12, 154);
             dgvProdutos.MultiSelect = false;
             dgvProdutos.Name = "dgvProdutos";
             dgvProdutos.ReadOnly = true;
             dgvProdutos.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvProdutos.Size = new Size(752, 478);
+            dgvProdutos.Size = new Size(752, 459);
             dgvProdutos.TabIndex = 9;
             dgvProdutos.CellDoubleClick += dgvProdutos_CellDoubleClick;
             // 
             // btnAtualizar
             // 
             btnAtualizar.Enabled = false;
-            btnAtualizar.Location = new Point(641, 13);
+            btnAtualizar.Location = new Point(626, 13);
             btnAtualizar.Name = "btnAtualizar";
             btnAtualizar.Size = new Size(102, 48);
             btnAtualizar.TabIndex = 10;
@@ -156,7 +157,7 @@
             // btnExcluir
             // 
             btnExcluir.Enabled = false;
-            btnExcluir.Location = new Point(641, 75);
+            btnExcluir.Location = new Point(626, 67);
             btnExcluir.Name = "btnExcluir";
             btnExcluir.Size = new Size(102, 50);
             btnExcluir.TabIndex = 11;
@@ -167,7 +168,7 @@
             // tabela
             // 
             tabela.AutoSize = true;
-            tabela.Location = new Point(12, 117);
+            tabela.Location = new Point(12, 136);
             tabela.Name = "tabela";
             tabela.Size = new Size(108, 15);
             tabela.TabIndex = 12;
@@ -202,12 +203,24 @@
             btnProximo.UseVisualStyleBackColor = true;
             btnProximo.Click += btnProximo_Click;
             // 
+            // cbxQuantidadeItens
+            // 
+            cbxQuantidadeItens.DropDownStyle = ComboBoxStyle.DropDownList;
+            cbxQuantidadeItens.FormattingEnabled = true;
+            cbxQuantidadeItens.Items.AddRange(new object[] { "10", "25", "50", "100" });
+            cbxQuantidadeItens.Location = new Point(643, 128);
+            cbxQuantidadeItens.Name = "cbxQuantidadeItens";
+            cbxQuantidadeItens.Size = new Size(121, 23);
+            cbxQuantidadeItens.TabIndex = 16;
+            cbxQuantidadeItens.SelectedIndexChanged += cbxQuantidadeItens_SelectedIndexChanged;
+            // 
             // frmCadastroProduto
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Yellow;
             ClientSize = new Size(783, 661);
+            Controls.Add(cbxQuantidadeItens);
             Controls.Add(btnProximo);
             Controls.Add(lblPaginas);
             Controls.Add(btnAnterior);
@@ -254,5 +267,6 @@
         private Button btnAnterior;
         private Label lblPaginas;
         private Button btnProximo;
+        private ComboBox cbxQuantidadeItens;
     }
 }

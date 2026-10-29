@@ -20,8 +20,9 @@ namespace SistemaVenda.Controller
             int id_funcionario = Session.userAuth.id_funcionario;
             product.id_funcionario = id_funcionario;
 
+            product.validar();
             // chamar a repository
-
+            // fazer o cadastro
             repository.createProduct(product);
 
             return true;
@@ -45,6 +46,7 @@ namespace SistemaVenda.Controller
 
         public bool atualizar(Product product)
         {
+            product.validar();
             return repository.atualizar(product);
         }
 

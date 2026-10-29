@@ -13,5 +13,18 @@ namespace SistemaVenda.model
         public float preco { get; set; }
         public int quantidade { get; set; }
         public DateTime data_registro { get; set; }
+
+        public void validar()
+        {
+            if (preco <= 0)
+            {
+                throw new ArgumentException("O preço não pode ser zerado!!");
+
+            }
+            if (quantidade < 0)
+            {
+                throw new ArgumentException("A quantidade não pode ser menor que zero!!");
+            }
+        }
     }
 }
