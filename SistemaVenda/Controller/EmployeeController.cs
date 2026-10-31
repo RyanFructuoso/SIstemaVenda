@@ -69,5 +69,15 @@ namespace SistemaVenda.Controller
 
             return true;
         }
+        
+        public void deslogar()
+        {
+            Session.userAuth = null;
+        }
+
+        public Employee? usuarioAutenticado()
+        {
+            return Session.userAuth;
+        }
     }
 }

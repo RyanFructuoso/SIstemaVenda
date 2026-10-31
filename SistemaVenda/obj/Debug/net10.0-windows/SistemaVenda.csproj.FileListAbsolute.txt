@@ -24,3 +24,5 @@ C:\Users\ryan.cfsilva\source\repos\SistemaVenda\SistemaVenda\obj\Debug\net10.0-w
 C:\Users\ryan.cfsilva\source\repos\SistemaVenda\SistemaVenda\obj\Debug\net10.0-windows\SistemaVenda.Properties.Resources.resources
 C:\Users\ryan.cfsilva\source\repos\SistemaVenda\SistemaVenda\bin\Debug\net10.0-windows\BCrypt-Net-Next.dll
 C:\Users\ryan.cfsilva\source\repos\SistemaVenda\SistemaVenda\obj\Debug\net10.0-windows\SistemaVenda.View.frmCadastroProduto.resources
+C:\Users\ryan.cfsilva\source\repos\SistemaVenda\SistemaVenda\obj\Debug\net10.0-windows\SistemaVenda.sourcelink.json
+C:\Users\ryan.cfsilva\source\repos\SistemaVenda\SistemaVenda\obj\Debug\net10.0-windows\SistemaVenda.View.frmUsuário.resources

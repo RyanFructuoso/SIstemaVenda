@@ -26,7 +26,7 @@ internal static class Program
                 if (primary.DialogResult != DialogResult.Retry)
                 {
                     break;
-                } 
+                }
             }
         }
     }
