@@ -1,9 +1,12 @@
 ﻿using SistemaVenda.Controller;
+using SistemaVenda.model;
+using SistemaVenda.repository;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Security.Policy;
 using System.Text;
 using System.Windows.Forms;
 
@@ -11,9 +14,12 @@ namespace SistemaVenda.View
 {
     public partial class frmCadastroFuncionario : Form
     {
+        private EmployeeController controller;
+
         public frmCadastroFuncionario()
         {
             InitializeComponent();
+            controller = new EmployeeController();
         }
 
         private void limparCampos()
@@ -30,24 +36,11 @@ namespace SistemaVenda.View
             this.txtconfirmarsenha.Clear();
         }
 
-        private void txttelefone_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtsenha_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtconfirmarsenha_TextChanged(object sender, EventArgs e)
-        {
-
-        }
 
         private void frmCadastroFuncionario_Load(object sender, EventArgs e)
         {
-
+            carregarFuncionarios();
+            this.cbxAdm.SelectedIndex = 0;
         }
 
         private void btncadastrar_Click(object sender, EventArgs e)
@@ -63,6 +56,8 @@ namespace SistemaVenda.View
             string senha = this.txtsenha.Text;
             string confirmarSenha = this.txtconfirmarsenha.Text;
 
+            bool adm = this.cbxAdm.SelectedIndex == 1;
+
             if (senha != confirmarSenha)
             {
                 MessageBox.Show("Senhas não conferem",
@@ -73,9 +68,23 @@ namespace SistemaVenda.View
             }
 
             // Chamar o controlador do usuario para criar cadastro
+
+            Employee funcionario = new Employee
+            {
+                nome = nome,
+                telefone = telefone,
+                rua = rua,
+                numero = numero,
+                cep = cep,
+                complemento = complemento,
+                usuario = usuario,
+                senha = senha,
+                adm = adm
+            };
+
+
             EmployeeController controller = new EmployeeController();
-            bool resp = controller.createEmployee(nome, telefone, rua, numero,
-                complemento, cep, usuario, senha);
+            bool resp = controller.createEmployee(funcionario);
 
             if (resp)
             {
@@ -83,12 +92,20 @@ namespace SistemaVenda.View
                     "Cadastro funcionário",
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
                 limparCampos();
+                carregarFuncionarios();
+                this.cbxAdm.SelectedIndex = 0;
             } else
             {
                 MessageBox.Show("Erro ao cadastrar funcionário",
                     "Cadastro Funcionário",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+        private void carregarFuncionarios()
+        {
+            List<Employee> list = controller.getAllFuncionario();
+            this.dgvFuncionarios.DataSource = list;
+            this.dgvFuncionarios.Columns["senha"].Visible = false;
         }
     }
 }

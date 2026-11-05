@@ -23,7 +23,8 @@ namespace SistemaVenda.repository
                 rua = ( reader.IsDBNull(reader.GetOrdinal("rua"))) ? null : reader.GetString("rua"),
                 numero = reader.GetString("numero"),
                 complemento = (reader.IsDBNull(reader.GetOrdinal("complemento"))) ? null : reader.GetString("complemento"),
-                cep = reader.GetString("cep")
+                cep = reader.GetString("cep"),
+                adm = reader.GetBoolean("adm")
             };
         }
 
@@ -45,9 +46,9 @@ namespace SistemaVenda.repository
         {
             using MySqlConnection connector = Database.GetConnection();
             string sql = @"INSERT INTO funcionario
-            (usuario, telefone, nome, senha, rua, numero, complemento, cep) 
+            (usuario, telefone, nome, senha, rua, numero, complemento, cep, adm) 
             VALUES 
-            (@usuario, @telefone, @nome, @senha, @rua, @numero, @complemento, @cep)";
+            (@usuario, @telefone, @nome, @senha, @rua, @numero, @complemento, @cep, @adm)";
             using MySqlCommand cmd = new MySqlCommand(sql, connector);
             cmd.Parameters.AddWithValue("@usuario", employee.usuario);
             cmd.Parameters.AddWithValue("@telefone", employee.telefone);
@@ -57,8 +58,44 @@ namespace SistemaVenda.repository
             cmd.Parameters.AddWithValue("@numero", employee.numero);
             cmd.Parameters.AddWithValue("@complemento", employee.complemento);
             cmd.Parameters.AddWithValue("@cep", employee.cep);
+            cmd.Parameters.AddWithValue("@adm", employee.adm);
             cmd.ExecuteNonQuery();
             return (int)cmd.LastInsertedId;
+        }
+
+        public List<Employee> getAllFuncionario()
+        {
+            using MySqlConnection connector = Database.GetConnection();
+            string sql = "SELECT * FROM funcionario";
+            using MySqlCommand cmd = new MySqlCommand(sql, connector);
+            using var reader = cmd.ExecuteReader();
+
+            List<Employee> list = new List<Employee>();
+            while (reader.Read())
+            {
+                list.Add(map(reader));
+            }
+            return list;
+        }
+
+        public List<Employee> listarPorPagina(int qtd, int pagina)
+        {
+            int offset = qtd * (pagina - 1);
+            using MySqlConnection connector = Database.GetConnection();
+            string sql = "SELECT * FROM funcionario LIMIT @limit OFFSET @offset";
+            using MySqlCommand cmd = new MySqlCommand(sql, connector);
+
+            cmd.Parameters.AddWithValue("@limit", qtd);
+            cmd.Parameters.AddWithValue("@offset", offset);
+
+            using var reader = cmd.ExecuteReader();
+
+            List<Employee> list = new List<Employee>();
+            while (reader.Read())
+            {
+                list.Add(map(reader));
+            }
+            return list;
         }
     }
 }

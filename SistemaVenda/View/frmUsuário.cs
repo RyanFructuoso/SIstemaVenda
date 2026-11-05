@@ -38,10 +38,5 @@ namespace SistemaVenda.View
             this.txtboxCep.Text = cep;
             this.txtboxComplemento.Text = complemento;
         }
-
-        private void txtboxNumero_TextChanged(object sender, EventArgs e)
-        {
-
-        }
     }
 }

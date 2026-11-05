@@ -26,9 +26,12 @@ namespace SistemaVenda.View
 
         private void frmPrimary_Load(object sender, EventArgs e)
         {
-            //string username = Session.username;
-            //bool isAdmin = Session.isAdmin;
-            //this.lblUsername.Text = username;
+            bool adm = controller.usuarioAdministrador();
+            if ( !adm)
+            {
+                this.btnCadFuncionario.Visible = false;
+            }
+
         }
 
         private void lblUsername_Click(object sender, EventArgs e)

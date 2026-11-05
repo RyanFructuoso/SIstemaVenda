@@ -48,6 +48,9 @@
             label7 = new Label();
             label8 = new Label();
             label9 = new Label();
+            dgvFuncionarios = new DataGridView();
+            cbxAdm = new ComboBox();
+            ((System.ComponentModel.ISupportInitialize)dgvFuncionarios).BeginInit();
             SuspendLayout();
             // 
             // txtnome
@@ -60,7 +63,7 @@
             // 
             // txtusuario
             // 
-            txtusuario.Location = new Point(448, 59);
+            txtusuario.Location = new Point(448, 42);
             txtusuario.Name = "txtusuario";
             txtusuario.PlaceholderText = "ex: João123";
             txtusuario.Size = new Size(225, 23);
@@ -73,11 +76,10 @@
             txttelefone.PlaceholderText = "ex: 15-99123-4567";
             txttelefone.Size = new Size(180, 23);
             txttelefone.TabIndex = 1;
-            txttelefone.TextChanged += txttelefone_TextChanged;
             // 
             // txtcomplemento
             // 
-            txtcomplemento.Location = new Point(62, 261);
+            txtcomplemento.Location = new Point(62, 198);
             txtcomplemento.Name = "txtcomplemento";
             txtcomplemento.PlaceholderText = "ex: Próximo ao mercado";
             txtcomplemento.Size = new Size(206, 23);
@@ -85,17 +87,16 @@
             // 
             // txtsenha
             // 
-            txtsenha.Location = new Point(448, 103);
+            txtsenha.Location = new Point(448, 92);
             txtsenha.Name = "txtsenha";
             txtsenha.PasswordChar = '*';
             txtsenha.PlaceholderText = "ex: 123456";
             txtsenha.Size = new Size(225, 23);
             txtsenha.TabIndex = 7;
-            txtsenha.TextChanged += txtsenha_TextChanged;
             // 
             // txtrua
             // 
-            txtrua.Location = new Point(62, 210);
+            txtrua.Location = new Point(62, 154);
             txtrua.Name = "txtrua";
             txtrua.PlaceholderText = "ex: Rua das flores";
             txtrua.Size = new Size(206, 23);
@@ -103,7 +104,7 @@
             // 
             // txtnumero
             // 
-            txtnumero.Location = new Point(64, 313);
+            txtnumero.Location = new Point(62, 242);
             txtnumero.Name = "txtnumero";
             txtnumero.PlaceholderText = "ex: 123";
             txtnumero.Size = new Size(100, 23);
@@ -111,7 +112,7 @@
             // 
             // txtcep
             // 
-            txtcep.Location = new Point(170, 313);
+            txtcep.Location = new Point(168, 242);
             txtcep.Name = "txtcep";
             txtcep.PlaceholderText = "ex: 12345-678";
             txtcep.Size = new Size(100, 23);
@@ -120,9 +121,9 @@
             // btncadastrar
             // 
             btncadastrar.BackColor = SystemColors.ActiveCaption;
-            btncadastrar.Location = new Point(491, 261);
+            btncadastrar.Location = new Point(589, 171);
             btncadastrar.Name = "btncadastrar";
-            btncadastrar.Size = new Size(182, 124);
+            btncadastrar.Size = new Size(224, 75);
             btncadastrar.TabIndex = 9;
             btncadastrar.Text = "Cadastrar";
             btncadastrar.UseVisualStyleBackColor = false;
@@ -130,13 +131,12 @@
             // 
             // txtconfirmarsenha
             // 
-            txtconfirmarsenha.Location = new Point(448, 154);
+            txtconfirmarsenha.Location = new Point(448, 136);
             txtconfirmarsenha.Name = "txtconfirmarsenha";
             txtconfirmarsenha.PasswordChar = '*';
             txtconfirmarsenha.PlaceholderText = "ex: 123456";
             txtconfirmarsenha.Size = new Size(225, 23);
             txtconfirmarsenha.TabIndex = 8;
-            txtconfirmarsenha.TextChanged += txtconfirmarsenha_TextChanged;
             // 
             // label1
             // 
@@ -159,7 +159,7 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(64, 192);
+            label3.Location = new Point(62, 136);
             label3.Name = "label3";
             label3.Size = new Size(27, 15);
             label3.TabIndex = 12;
@@ -168,7 +168,7 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(64, 243);
+            label4.Location = new Point(62, 180);
             label4.Name = "label4";
             label4.Size = new Size(84, 15);
             label4.TabIndex = 13;
@@ -177,7 +177,7 @@
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(64, 295);
+            label5.Location = new Point(62, 224);
             label5.Name = "label5";
             label5.Size = new Size(51, 15);
             label5.TabIndex = 14;
@@ -186,7 +186,7 @@
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new Point(170, 295);
+            label6.Location = new Point(168, 224);
             label6.Name = "label6";
             label6.Size = new Size(28, 15);
             label6.TabIndex = 15;
@@ -195,7 +195,7 @@
             // label7
             // 
             label7.AutoSize = true;
-            label7.Location = new Point(448, 41);
+            label7.Location = new Point(449, 24);
             label7.Name = "label7";
             label7.Size = new Size(47, 15);
             label7.TabIndex = 16;
@@ -204,7 +204,7 @@
             // label8
             // 
             label8.AutoSize = true;
-            label8.Location = new Point(448, 85);
+            label8.Location = new Point(448, 74);
             label8.Name = "label8";
             label8.Size = new Size(39, 15);
             label8.TabIndex = 17;
@@ -213,18 +213,42 @@
             // label9
             // 
             label9.AutoSize = true;
-            label9.Location = new Point(449, 136);
+            label9.Location = new Point(448, 118);
             label9.Name = "label9";
             label9.Size = new Size(95, 15);
             label9.TabIndex = 18;
             label9.Text = "Confirmar senha";
+            // 
+            // dgvFuncionarios
+            // 
+            dgvFuncionarios.AllowUserToAddRows = false;
+            dgvFuncionarios.AllowUserToDeleteRows = false;
+            dgvFuncionarios.AllowUserToOrderColumns = true;
+            dgvFuncionarios.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvFuncionarios.Location = new Point(3, 271);
+            dgvFuncionarios.Name = "dgvFuncionarios";
+            dgvFuncionarios.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvFuncionarios.Size = new Size(820, 354);
+            dgvFuncionarios.TabIndex = 19;
+            // 
+            // cbxAdm
+            // 
+            cbxAdm.DropDownStyle = ComboBoxStyle.DropDownList;
+            cbxAdm.FormattingEnabled = true;
+            cbxAdm.Items.AddRange(new object[] { "Funcionário", "Administrador\t" });
+            cbxAdm.Location = new Point(448, 180);
+            cbxAdm.Name = "cbxAdm";
+            cbxAdm.Size = new Size(135, 23);
+            cbxAdm.TabIndex = 20;
             // 
             // frmCadastroFuncionario
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.HotTrack;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(835, 625);
+            Controls.Add(cbxAdm);
+            Controls.Add(dgvFuncionarios);
             Controls.Add(label9);
             Controls.Add(label8);
             Controls.Add(label7);
@@ -250,6 +274,7 @@
             Name = "frmCadastroFuncionario";
             Text = "Cadastro Funcionário";
             Load += frmCadastroFuncionario_Load;
+            ((System.ComponentModel.ISupportInitialize)dgvFuncionarios).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -275,5 +300,7 @@
         private Label label7;
         private Label label8;
         private Label label9;
+        private DataGridView dgvFuncionarios;
+        private ComboBox cbxAdm;
     }
 }

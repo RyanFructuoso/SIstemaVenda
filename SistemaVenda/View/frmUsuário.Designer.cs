@@ -50,7 +50,7 @@
             // lbltextnome
             // 
             lbltextnome.AutoSize = true;
-            lbltextnome.Location = new Point(12, 36);
+            lbltextnome.Location = new Point(12, 51);
             lbltextnome.Name = "lbltextnome";
             lbltextnome.Size = new Size(43, 15);
             lbltextnome.TabIndex = 0;
@@ -59,7 +59,7 @@
             // lbltextusuario
             // 
             lbltextusuario.AutoSize = true;
-            lbltextusuario.Location = new Point(12, 101);
+            lbltextusuario.Location = new Point(12, 116);
             lbltextusuario.Name = "lbltextusuario";
             lbltextusuario.Size = new Size(50, 15);
             lbltextusuario.TabIndex = 2;
@@ -68,7 +68,7 @@
             // lbltexttelefone
             // 
             lbltexttelefone.AutoSize = true;
-            lbltexttelefone.Location = new Point(229, 37);
+            lbltexttelefone.Location = new Point(229, 52);
             lbltexttelefone.Name = "lbltexttelefone";
             lbltexttelefone.Size = new Size(55, 15);
             lbltexttelefone.TabIndex = 4;
@@ -134,7 +134,6 @@
             txtboxNumero.PlaceholderText = "Numero";
             txtboxNumero.Size = new Size(206, 23);
             txtboxNumero.TabIndex = 16;
-            txtboxNumero.TextChanged += txtboxNumero_TextChanged;
             // 
             // txtboxCep
             // 
@@ -154,7 +153,7 @@
             // 
             // txtboxNome
             // 
-            txtboxNome.Location = new Point(12, 55);
+            txtboxNome.Location = new Point(12, 70);
             txtboxNome.Name = "txtboxNome";
             txtboxNome.PlaceholderText = "Nome";
             txtboxNome.Size = new Size(211, 23);
@@ -162,7 +161,7 @@
             // 
             // txtboxUsuario
             // 
-            txtboxUsuario.Location = new Point(12, 119);
+            txtboxUsuario.Location = new Point(12, 134);
             txtboxUsuario.Name = "txtboxUsuario";
             txtboxUsuario.PlaceholderText = "Usuário";
             txtboxUsuario.Size = new Size(211, 23);
@@ -170,7 +169,7 @@
             // 
             // txtboxTelefone
             // 
-            txtboxTelefone.Location = new Point(229, 55);
+            txtboxTelefone.Location = new Point(229, 70);
             txtboxTelefone.Name = "txtboxTelefone";
             txtboxTelefone.PlaceholderText = "Telefone";
             txtboxTelefone.Size = new Size(211, 23);
@@ -188,7 +187,7 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(12, 21);
+            label3.Location = new Point(12, 27);
             label3.Name = "label3";
             label3.Size = new Size(70, 15);
             label3.TabIndex = 23;

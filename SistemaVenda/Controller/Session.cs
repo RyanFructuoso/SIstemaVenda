@@ -10,7 +10,6 @@ namespace SistemaVenda.Controller
     {
         // O ? significa que ou eu vou receber algo, ou não vou receber nada
         public static Employee? userAuth;
-        public static bool isAdmin = false;
         
     }
 }
