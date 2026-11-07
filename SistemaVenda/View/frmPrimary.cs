@@ -27,7 +27,7 @@ namespace SistemaVenda.View
         private void frmPrimary_Load(object sender, EventArgs e)
         {
             bool adm = controller.usuarioAdministrador();
-            if ( !adm)
+            if (!adm)
             {
                 this.btnCadFuncionario.Visible = false;
             }
@@ -49,6 +49,8 @@ namespace SistemaVenda.View
             formulario.TopLevel = false;
             formulario.FormBorderStyle = FormBorderStyle.None;
             formulario.Dock = DockStyle.Fill;
+
+            this.lblTitulo.Text = formulario.Text;
 
             painelPrincipal.Controls.Add(formulario);
             formulario.Show();
@@ -80,6 +82,10 @@ namespace SistemaVenda.View
             exibirFormulario(frm);
         }
 
-
+        private void button1_Click(object sender, EventArgs e)
+        {
+            frmCadastroVenda frm = new frmCadastroVenda();
+            exibirFormulario(frm);
+        }
     }
 }

@@ -124,7 +124,7 @@
             btncadastrar.Location = new Point(589, 171);
             btncadastrar.Name = "btncadastrar";
             btncadastrar.Size = new Size(224, 75);
-            btncadastrar.TabIndex = 9;
+            btncadastrar.TabIndex = 10;
             btncadastrar.Text = "Cadastrar";
             btncadastrar.UseVisualStyleBackColor = false;
             btncadastrar.Click += btncadastrar_Click;
@@ -239,7 +239,7 @@
             cbxAdm.Location = new Point(448, 180);
             cbxAdm.Name = "cbxAdm";
             cbxAdm.Size = new Size(135, 23);
-            cbxAdm.TabIndex = 20;
+            cbxAdm.TabIndex = 9;
             // 
             // frmCadastroFuncionario
             // 

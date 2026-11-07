@@ -125,7 +125,7 @@
             txtboxRua.Name = "txtboxRua";
             txtboxRua.PlaceholderText = "Rua";
             txtboxRua.Size = new Size(211, 23);
-            txtboxRua.TabIndex = 15;
+            txtboxRua.TabIndex = 3;
             // 
             // txtboxNumero
             // 
@@ -133,7 +133,7 @@
             txtboxNumero.Name = "txtboxNumero";
             txtboxNumero.PlaceholderText = "Numero";
             txtboxNumero.Size = new Size(206, 23);
-            txtboxNumero.TabIndex = 16;
+            txtboxNumero.TabIndex = 4;
             // 
             // txtboxCep
             // 
@@ -141,7 +141,7 @@
             txtboxCep.Name = "txtboxCep";
             txtboxCep.PlaceholderText = "Cep";
             txtboxCep.Size = new Size(211, 23);
-            txtboxCep.TabIndex = 17;
+            txtboxCep.TabIndex = 5;
             // 
             // txtboxComplemento
             // 
@@ -149,7 +149,7 @@
             txtboxComplemento.Name = "txtboxComplemento";
             txtboxComplemento.PlaceholderText = "Complemento";
             txtboxComplemento.Size = new Size(206, 23);
-            txtboxComplemento.TabIndex = 18;
+            txtboxComplemento.TabIndex = 6;
             // 
             // txtboxNome
             // 
@@ -157,7 +157,7 @@
             txtboxNome.Name = "txtboxNome";
             txtboxNome.PlaceholderText = "Nome";
             txtboxNome.Size = new Size(211, 23);
-            txtboxNome.TabIndex = 19;
+            txtboxNome.TabIndex = 0;
             // 
             // txtboxUsuario
             // 
@@ -165,7 +165,7 @@
             txtboxUsuario.Name = "txtboxUsuario";
             txtboxUsuario.PlaceholderText = "Usuário";
             txtboxUsuario.Size = new Size(211, 23);
-            txtboxUsuario.TabIndex = 20;
+            txtboxUsuario.TabIndex = 2;
             // 
             // txtboxTelefone
             // 
@@ -173,7 +173,7 @@
             txtboxTelefone.Name = "txtboxTelefone";
             txtboxTelefone.PlaceholderText = "Telefone";
             txtboxTelefone.Size = new Size(211, 23);
-            txtboxTelefone.TabIndex = 21;
+            txtboxTelefone.TabIndex = 1;
             // 
             // label2
             // 
@@ -197,6 +197,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.DarkCyan;
             ClientSize = new Size(800, 450);
             Controls.Add(label3);
             Controls.Add(label2);
@@ -216,7 +217,7 @@
             Controls.Add(lbltextusuario);
             Controls.Add(lbltextnome);
             Name = "frmUsuário";
-            Text = "frmUsuário";
+            Text = "Usuário";
             Load += frmUsuário_Load;
             ResumeLayout(false);
             PerformLayout();

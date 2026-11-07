@@ -241,7 +241,7 @@
             Icon = (Icon)resources.GetObject("$this.Icon");
             MaximizeBox = false;
             Name = "frmCadastroProduto";
-            Text = "frmCadastroProduto";
+            Text = "Cadastro Produto";
             Load += frmCadastroProduto_Load;
             ((System.ComponentModel.ISupportInitialize)txtquantidade).EndInit();
             ((System.ComponentModel.ISupportInitialize)dgvProdutos).EndInit();
