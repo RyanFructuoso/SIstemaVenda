@@ -13,6 +13,7 @@ namespace SistemaVenda.View
     public partial class frmCadastroVenda : Form
     {
         private ProductController produtocontrole;
+        private List<Item> carrinho = new List<Item>();
         public frmCadastroVenda()
         {
             InitializeComponent();
@@ -27,18 +28,119 @@ namespace SistemaVenda.View
             cbxProdutos.ValueMember = "id_produto";
         }
 
+        private void configurarCarrinho()
+        {
+            this.dgvCarrinho.AutoGenerateColumns = false;
+            this.dgvCarrinho.Columns.Clear();
+            this.dgvCarrinho.Columns.Add(new DataGridViewTextBoxColumn
+            {
+                HeaderText = "Produto",
+                Name = "colunaProduto",
+                DataPropertyName = "nomeProduto",
+                DefaultCellStyle = new DataGridViewCellStyle
+                {
+                    Format = "C2"
+                }
+            });
+            this.dgvCarrinho.Columns.Add(new DataGridViewTextBoxColumn
+            {
+                HeaderText = "Quantidade",
+                Name = "colunaQuantidade",
+                DataPropertyName = "quantidade",
+            });
+            this.dgvCarrinho.Columns.Add(new DataGridViewTextBoxColumn
+            {
+                HeaderText = "Preço unitário",
+                Name = "colunaPreco",
+                DataPropertyName = "precoReal",
+                DefaultCellStyle = new DataGridViewCellStyle
+                {
+                    Format = "C2"
+                }
+            });
+            this.dgvCarrinho.Columns.Add(new DataGridViewTextBoxColumn
+            {
+                HeaderText = "Sub total",
+                Name = "colunaSubTotal",
+                DataPropertyName = "subTotal",
+                DefaultCellStyle = new DataGridViewCellStyle
+                {
+                    Format = "C2"
+                }
+            });
+        }
+
+        public void atualizarCarrinho()
+        {
+            this.dgvCarrinho.DataSource = null;
+            this.dgvCarrinho.DataSource = this.carrinho;
+            this.btnCadastrar.Enabled = this.carrinho.Count() > 0;
+            decimal total = this.carrinho.Sum(item => item.subTotal);
+            this.lblTotalVenda.Text = $"Total da Venda: {total:c2}";
+        }
+
         private void frmCadastroVenda_Load(object sender, EventArgs e)
         {
             carregarProdutos();
+            configurarCarrinho();
+            atualizarCarrinho();
         }
 
         private void cbxProdutos_SelectedIndexChanged(object sender, EventArgs e)
         {
             Product produto = cbxProdutos.SelectedItem as Product;
-            this.lblPreco.Text = $"Preço Unitário: R$ {produto.preco}";
+            this.lblPreco.Text = $"Preço Unitário: R$ {produto.precoReal:C2}";
             this.lblQuantidade.Text = $"Quantidade Disponivel: {produto.quantidade}";
             this.numQuantidade.Maximum = produto.quantidade;
-            this.numQuantidade.Value = (this.numQuantidade.Maximum > 0)? 1 : 0;
+            this.numQuantidade.Value = (this.numQuantidade.Maximum > 0) ? 1 : 0;
+        }
+
+        private void btnAdicionar_Click(object sender, EventArgs e)
+        {
+            Product produto = this.cbxProdutos.SelectedItem as Product;
+            int quantidade = (int)this.numQuantidade.Value;
+
+            Item? itemExistente = this.carrinho.FirstOrDefault(item => item.id_produto == produto.id_produto);
+            if (itemExistente == null)
+            {
+                Item novoItem = new Item
+                {
+                    id_produto = produto.id_produto,
+                    quantidade = quantidade,
+                    preco = produto.preco,
+                    nomeProduto = produto.nome,
+                    marcaProduto = produto.marca
+                };
+                this.carrinho.Add(novoItem);
+            }
+            else
+            {
+                itemExistente.quantidade += quantidade;
+            }
+            produto.quantidade -= quantidade;
+            this.cbxProdutos.SelectedItem = produto;
+            cbxProdutos_SelectedIndexChanged(this, EventArgs.Empty);
+
+            atualizarCarrinho();
+        }
+
+        private void btnCadastrar_Click(object sender, EventArgs e)
+        {
+            decimal total = this.carrinho.Sum(item => item.subTotal);
+            DialogResult confirmar = MessageBox.Show(
+                $"Deseja efetuar a venda no valor de: {total:C2}?",
+                "Confirmar Venda",
+                MessageBoxButtons.YesNo, MessageBoxIcon.Question
+                );
+            if ( confirmar == DialogResult.No)
+            {
+                return;
+            }
+            // enviar os dados para o controle
+            carrinho.Clear();
+            frmCadastroVenda_Load(this, EventArgs.Empty);
+
+            MessageBox.Show("Venda Cadastrada com Sucesso!!");
         }
     }
 }

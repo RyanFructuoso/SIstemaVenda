@@ -33,7 +33,7 @@ namespace SistemaVenda.View
         {
             string nome = this.txtnome.Text;
             string marca = this.txtmarca.Text;
-            float preco = float.Parse(this.txtpreco.Text);
+            int preco = Convert.ToInt32(this.txtpreco.Text);
             int quantidade = Convert.ToInt32(this.txtquantidade.Text);
 
             //Encapsulando os dados
@@ -111,7 +111,7 @@ namespace SistemaVenda.View
             // evento de atualizar
             produtoSelecionado.nome = this.txtnome.Text;
             produtoSelecionado.marca = this.txtmarca.Text;
-            produtoSelecionado.preco = float.Parse(this.txtpreco.Text);
+            produtoSelecionado.preco = Convert.ToInt32(this.txtpreco.Text);
             produtoSelecionado.quantidade = (int)this.txtquantidade.Value;
             bool resp = controller.atualizar(produtoSelecionado);
 
