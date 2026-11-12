@@ -17,7 +17,7 @@ namespace SistemaVenda.database
             {
                 Server = "localhost",
                 Port = 3306,
-                Database = "db_vendas",
+                Database = "ryan_dbvendas",
                 UserID = "root",
                 Password = ""
             };

@@ -84,7 +84,7 @@ namespace SistemaVenda.View
 
             List<Product> list = controller.listarPorPagina(totalPorPagina, paginaAtual);
             this.dgvProdutos.DataSource = list;
-            this.dgvProdutos.Columns["id_funcionario"].Visible = false;
+            this.dgvProdutos.Columns["cod_funcionario"].Visible = false;
 
         }
 

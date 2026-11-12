@@ -17,8 +17,8 @@ namespace SistemaVenda.Controller
 
         public bool createProduct(Product product)
         {
-            int id_funcionario = Session.userAuth.id_funcionario;
-            product.id_funcionario = id_funcionario;
+            int cod_funcionario = Session.userAuth.cod_funcionario;
+            product.cod_funcionario = cod_funcionario;
 
             product.validar();
             // chamar a repository
@@ -52,7 +52,7 @@ namespace SistemaVenda.Controller
 
         public bool excluir(Product product)
         {
-            return repository.excluir(product.id_produto);
+            return repository.excluir(product.cod_produto);
         }
     }
 }

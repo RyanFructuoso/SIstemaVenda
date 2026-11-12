@@ -6,8 +6,8 @@ namespace SistemaVenda.model
 {
     internal class Product
     {
-        public int id_produto { get; set; }
-        public int id_funcionario { get; set; }
+        public int cod_produto { get; set; }
+        public int cod_funcionario { get; set; }
         public string nome { get; set; }
         public string marca { get; set; }
         public int preco { get; set; }

@@ -6,7 +6,7 @@ namespace SistemaVenda.model
 {
     internal class Employee
     {
-        public int id_funcionario { get; set; }
+        public int cod_funcionario { get; set; }
         public string usuario { get; set; }
         public string telefone { get; set; }
         public string nome { get; set; }

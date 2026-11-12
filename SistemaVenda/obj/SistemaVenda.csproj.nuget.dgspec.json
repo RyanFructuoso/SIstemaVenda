@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\ryan.cfsilva\\source\\repos\\SistemaVenda\\SistemaVenda\\SistemaVenda.csproj": {}
+    "C:\\Users\\ryan.cfsilva\\source\\repos\\SIstemaVenda\\SistemaVenda\\SistemaVenda.csproj": {}
   },
   "projects": {
-    "C:\\Users\\ryan.cfsilva\\source\\repos\\SistemaVenda\\SistemaVenda\\SistemaVenda.csproj": {
+    "C:\\Users\\ryan.cfsilva\\source\\repos\\SIstemaVenda\\SistemaVenda\\SistemaVenda.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\ryan.cfsilva\\source\\repos\\SistemaVenda\\SistemaVenda\\SistemaVenda.csproj",
+        "projectUniqueName": "C:\\Users\\ryan.cfsilva\\source\\repos\\SIstemaVenda\\SistemaVenda\\SistemaVenda.csproj",
         "projectName": "SistemaVenda",
-        "projectPath": "C:\\Users\\ryan.cfsilva\\source\\repos\\SistemaVenda\\SistemaVenda\\SistemaVenda.csproj",
+        "projectPath": "C:\\Users\\ryan.cfsilva\\source\\repos\\SIstemaVenda\\SistemaVenda\\SistemaVenda.csproj",
         "packagesPath": "C:\\Users\\ryan.cfsilva\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\ryan.cfsilva\\source\\repos\\SistemaVenda\\SistemaVenda\\obj\\",
+        "outputPath": "C:\\Users\\ryan.cfsilva\\source\\repos\\SIstemaVenda\\SistemaVenda\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

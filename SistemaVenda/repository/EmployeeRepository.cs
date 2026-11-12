@@ -15,7 +15,7 @@ namespace SistemaVenda.repository
         {
             return new Employee
             {
-                id_funcionario = reader.GetInt32("id_funcionario"),
+                cod_funcionario = reader.GetInt32("cod_funcionario"),
                 usuario = reader.GetString("usuario"),
                 telefone = reader.GetString("telefone"),
                 nome = reader.GetString("nome"),

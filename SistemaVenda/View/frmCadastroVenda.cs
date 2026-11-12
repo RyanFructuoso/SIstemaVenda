@@ -13,11 +13,13 @@ namespace SistemaVenda.View
     public partial class frmCadastroVenda : Form
     {
         private ProductController produtocontrole;
+        private VendaController vendaController;
         private List<Item> carrinho = new List<Item>();
         public frmCadastroVenda()
         {
             InitializeComponent();
             produtocontrole = new ProductController();
+            vendaController = new VendaController();
         }
 
         private void carregarProdutos()
@@ -25,7 +27,7 @@ namespace SistemaVenda.View
             List<Product> lista = produtocontrole.listarProdutos();
             cbxProdutos.DataSource = lista;
             cbxProdutos.DisplayMember = "nome";
-            cbxProdutos.ValueMember = "id_produto";
+            cbxProdutos.ValueMember = "cod_produto";
         }
 
         private void configurarCarrinho()
@@ -100,12 +102,12 @@ namespace SistemaVenda.View
             Product produto = this.cbxProdutos.SelectedItem as Product;
             int quantidade = (int)this.numQuantidade.Value;
 
-            Item? itemExistente = this.carrinho.FirstOrDefault(item => item.id_produto == produto.id_produto);
+            Item? itemExistente = this.carrinho.FirstOrDefault(item => item.cod_produto == produto.cod_produto);
             if (itemExistente == null)
             {
                 Item novoItem = new Item
                 {
-                    id_produto = produto.id_produto,
+                    cod_produto = produto.cod_produto,
                     quantidade = quantidade,
                     preco = produto.preco,
                     nomeProduto = produto.nome,
@@ -137,10 +139,27 @@ namespace SistemaVenda.View
                 return;
             }
             // enviar os dados para o controle
-            carrinho.Clear();
-            frmCadastroVenda_Load(this, EventArgs.Empty);
+            try
+            {
+                bool resposta = vendaController.cadastrarVenda(this.carrinho);
+                if (resposta)
+                {
+                carrinho.Clear();
+                frmCadastroVenda_Load(this, EventArgs.Empty);
+                MessageBox.Show("Venda Cadastrada com Sucesso!!");
+                }
+                else
+                {
+                    MessageBox.Show($"Erro ao cadastrar Venda!!", "Erro no cadastro",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            catch (Exception ex) 
+            {
+                MessageBox.Show($"Erro: {ex.Message}", "Erro no cadastro",
+                MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
 
-            MessageBox.Show("Venda Cadastrada com Sucesso!!");
         }
     }
 }
