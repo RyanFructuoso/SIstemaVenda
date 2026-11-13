@@ -50,6 +50,15 @@ namespace SistemaVenda.View
                 Name = "colunaQuantidade",
                 DataPropertyName = "quantidade",
             });
+
+            this.dgvCarrinho.Columns.Add(new DataGridViewButtonColumn
+            {
+                HeaderText = "Excluir",
+                Name = "colunaExcluir",
+                Text = "Excluir",
+                UseColumnTextForButtonValue = true,
+            });
+
             this.dgvCarrinho.Columns.Add(new DataGridViewTextBoxColumn
             {
                 HeaderText = "Preço unitário",
@@ -74,8 +83,7 @@ namespace SistemaVenda.View
 
         public void atualizarCarrinho()
         {
-            this.dgvCarrinho.DataSource = null;
-            this.dgvCarrinho.DataSource = this.carrinho;
+            this.dgvCarrinho.DataSource = this.carrinho.ToList();
             this.btnCadastrar.Enabled = this.carrinho.Count() > 0;
             decimal total = this.carrinho.Sum(item => item.subTotal);
             this.lblTotalVenda.Text = $"Total da Venda: {total:c2}";
@@ -134,7 +142,7 @@ namespace SistemaVenda.View
                 "Confirmar Venda",
                 MessageBoxButtons.YesNo, MessageBoxIcon.Question
                 );
-            if ( confirmar == DialogResult.No)
+            if (confirmar == DialogResult.No)
             {
                 return;
             }
@@ -144,9 +152,9 @@ namespace SistemaVenda.View
                 bool resposta = vendaController.cadastrarVenda(this.carrinho);
                 if (resposta)
                 {
-                carrinho.Clear();
-                frmCadastroVenda_Load(this, EventArgs.Empty);
-                MessageBox.Show("Venda Cadastrada com Sucesso!!");
+                    carrinho.Clear();
+                    frmCadastroVenda_Load(this, EventArgs.Empty);
+                    MessageBox.Show("Venda Cadastrada com Sucesso!!");
                 }
                 else
                 {
@@ -154,12 +162,40 @@ namespace SistemaVenda.View
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
-            catch (Exception ex) 
+            catch (Exception ex)
             {
                 MessageBox.Show($"Erro: {ex.Message}", "Erro no cadastro",
                 MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
+        }
+
+        private void dgvCarrinho_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex == -1)
+            {
+                return;
+            }
+            if (this.dgvCarrinho.Columns[e.ColumnIndex].Name == "colunaExcluir")
+            {
+                excluirItemCarrinho(e.RowIndex);
+                
+            }
+        }
+
+        private void excluirItemCarrinho(int indice)
+        {
+            DialogResult confirmar = MessageBox.Show(
+               $"Deseja Excluir o Item?",
+               "Excluir Item",
+               MessageBoxButtons.YesNo, MessageBoxIcon.Question
+               );
+            if (confirmar == DialogResult.No)
+            {
+                return;
+            }
+            this.carrinho.RemoveAt(indice);
+            atualizarCarrinho();
         }
     }
 }
