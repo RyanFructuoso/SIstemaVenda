@@ -1,0 +1,42 @@
+﻿using SistemaVenda.Controller;
+using SistemaVenda.model;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Text;
+using System.Windows.Forms;
+
+namespace SistemaVenda.View
+{
+    public partial class frmUsuário : Form
+    {
+        private FuncionarioControle controller;
+        public frmUsuário()
+        {
+            InitializeComponent();
+            controller = new FuncionarioControle();
+        }
+
+        private void frmUsuário_Load(object sender, EventArgs e)
+        {
+            Funcionario? funcionario = controller.usuarioAutenticado();
+            string nome = (funcionario != null) ? funcionario.nome : "";
+            string usuario = (funcionario != null) ? funcionario.usuario : "";
+            string telefone = (funcionario != null) ? funcionario.telefone : "";
+            string rua = (funcionario != null) ? funcionario.rua : "";
+            string numero = (funcionario != null) ? funcionario.numero : "";
+            string cep = (funcionario != null) ? funcionario.cep : "";
+            string complemento = (funcionario != null) ? funcionario.complemento : "";
+
+            this.txtNome.Text = nome;
+            this.txtUsuario.Text = usuario;
+            this.txtTelefone.Text = telefone;
+            this.txtRua.Text = rua;
+            this.txtNumero.Text = numero;
+            this.txtCep.Text = cep;
+            this.txtComplemento.Text = complemento;
+        }
+    }
+}

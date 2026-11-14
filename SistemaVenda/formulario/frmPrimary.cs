@@ -1,0 +1,86 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Text;
+using System.Windows.Forms;
+
+using SistemaVenda.Controller;
+using SistemaVenda.model;
+
+namespace SistemaVenda.View
+{
+    public partial class frmPrimary : Form
+    {
+
+        private FuncionarioControle controller;
+        public frmPrimary()
+        {
+            InitializeComponent();
+            controller = new FuncionarioControle();
+            Funcionario? funcionario = controller.usuarioAutenticado();
+            string nome = (funcionario != null) ? funcionario.nome : "";
+            this.Text += $"- {nome}";
+        }
+
+        private void frmPrimary_Load(object sender, EventArgs e)
+        {
+            bool adm = controller.usuarioAdministrador();
+            if (!adm)
+            {
+                this.btnCadFuncionario.Visible = false;
+            }
+
+        }
+
+        private void exibirFormulario(Form formulario)
+        {
+            while (painelPrincipal.Controls.Count > 0)
+            {
+                painelPrincipal.Controls[0].Dispose();
+            }
+
+            formulario.TopLevel = false;
+            formulario.FormBorderStyle = FormBorderStyle.None;
+            formulario.Dock = DockStyle.Fill;
+
+            this.lblTitulo.Text = formulario.Text;
+
+            painelPrincipal.Controls.Add(formulario);
+            formulario.Show();
+        }
+
+        private void btnCadFuncionario_Click(object sender, EventArgs e)
+        {
+            frmCadastroFuncionario frm = new frmCadastroFuncionario();
+            exibirFormulario(frm);
+        }
+
+        private void cadProduto_Click(object sender, EventArgs e)
+        {
+            frmCadastroProduto frm = new frmCadastroProduto();
+            exibirFormulario(frm);
+        }
+
+        private void btnSair_Click(object sender, EventArgs e)
+        {
+            // evento para sair
+            controller.deslogar();
+            this.DialogResult = DialogResult.Retry;
+            this.Dispose();
+        }
+
+        private void btnDadosUsuario_Click(object sender, EventArgs e)
+        {
+            frmUsuário frm = new frmUsuário();
+            exibirFormulario(frm);
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            frmCadastroVenda frm = new frmCadastroVenda();
+            exibirFormulario(frm);
+        }
+    }
+}
