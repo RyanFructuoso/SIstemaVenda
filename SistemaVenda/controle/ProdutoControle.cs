@@ -44,15 +44,15 @@ namespace SistemaVenda.Controller
             return (int)Math.Ceiling((decimal)totalProdutos / quantidadeItens);
         }
 
-        public bool atualizar(Produto product)
+        public bool atualizar(Produto produto)
         {
-            product.validar();
-            return repositorio.atualizar(product);
+            produto.validar();
+            return repositorio.atualizar(produto);
         }
 
-        public bool excluir(Produto product)
+        public bool excluir(Produto produto)
         {
-            return repositorio.excluir(product.cod_produto);
+            return repositorio.excluir(produto.cod_produto);
         }
     }
 }
