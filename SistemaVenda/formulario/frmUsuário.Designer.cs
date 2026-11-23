@@ -43,14 +43,14 @@
             txtNome = new TextBox();
             txtUsuario = new TextBox();
             txtTelefone = new TextBox();
-            lblEndereco = new Label();
-            lblFuncionario = new Label();
+            pictureBox1 = new PictureBox();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
             // lblNome
             // 
             lblNome.AutoSize = true;
-            lblNome.Location = new Point(12, 51);
+            lblNome.Location = new Point(357, 52);
             lblNome.Name = "lblNome";
             lblNome.Size = new Size(43, 15);
             lblNome.TabIndex = 0;
@@ -59,7 +59,7 @@
             // lblUsuario
             // 
             lblUsuario.AutoSize = true;
-            lblUsuario.Location = new Point(12, 116);
+            lblUsuario.Location = new Point(357, 142);
             lblUsuario.Name = "lblUsuario";
             lblUsuario.Size = new Size(50, 15);
             lblUsuario.TabIndex = 2;
@@ -68,7 +68,7 @@
             // lblTelefone
             // 
             lblTelefone.AutoSize = true;
-            lblTelefone.Location = new Point(229, 52);
+            lblTelefone.Location = new Point(577, 52);
             lblTelefone.Name = "lblTelefone";
             lblTelefone.Size = new Size(55, 15);
             lblTelefone.TabIndex = 4;
@@ -77,7 +77,7 @@
             // lblDadosFuncionario
             // 
             lblDadosFuncionario.AutoSize = true;
-            lblDadosFuncionario.Location = new Point(184, 9);
+            lblDadosFuncionario.Location = new Point(375, 9);
             lblDadosFuncionario.Name = "lblDadosFuncionario";
             lblDadosFuncionario.Size = new Size(99, 15);
             lblDadosFuncionario.TabIndex = 6;
@@ -86,7 +86,7 @@
             // lblRua
             // 
             lblRua.AutoSize = true;
-            lblRua.Location = new Point(12, 212);
+            lblRua.Location = new Point(357, 327);
             lblRua.Name = "lblRua";
             lblRua.Size = new Size(30, 15);
             lblRua.TabIndex = 7;
@@ -95,7 +95,7 @@
             // lblNumero
             // 
             lblNumero.AutoSize = true;
-            lblNumero.Location = new Point(229, 213);
+            lblNumero.Location = new Point(577, 142);
             lblNumero.Name = "lblNumero";
             lblNumero.Size = new Size(54, 15);
             lblNumero.TabIndex = 9;
@@ -104,7 +104,7 @@
             // lblCep
             // 
             lblCep.AutoSize = true;
-            lblCep.Location = new Point(12, 277);
+            lblCep.Location = new Point(357, 247);
             lblCep.Name = "lblCep";
             lblCep.Size = new Size(31, 15);
             lblCep.TabIndex = 11;
@@ -113,7 +113,7 @@
             // lblComplemento
             // 
             lblComplemento.AutoSize = true;
-            lblComplemento.Location = new Point(229, 277);
+            lblComplemento.Location = new Point(577, 258);
             lblComplemento.Name = "lblComplemento";
             lblComplemento.Size = new Size(87, 15);
             lblComplemento.TabIndex = 13;
@@ -121,7 +121,7 @@
             // 
             // txtRua
             // 
-            txtRua.Location = new Point(12, 230);
+            txtRua.Location = new Point(357, 345);
             txtRua.Name = "txtRua";
             txtRua.PlaceholderText = "Rua";
             txtRua.Size = new Size(211, 23);
@@ -129,7 +129,7 @@
             // 
             // txtNumero
             // 
-            txtNumero.Location = new Point(229, 231);
+            txtNumero.Location = new Point(577, 160);
             txtNumero.Name = "txtNumero";
             txtNumero.PlaceholderText = "Numero";
             txtNumero.Size = new Size(206, 23);
@@ -137,7 +137,7 @@
             // 
             // txtCep
             // 
-            txtCep.Location = new Point(12, 295);
+            txtCep.Location = new Point(357, 276);
             txtCep.Name = "txtCep";
             txtCep.PlaceholderText = "Cep";
             txtCep.Size = new Size(211, 23);
@@ -145,7 +145,7 @@
             // 
             // txtComplemento
             // 
-            txtComplemento.Location = new Point(229, 295);
+            txtComplemento.Location = new Point(577, 276);
             txtComplemento.Name = "txtComplemento";
             txtComplemento.PlaceholderText = "Complemento";
             txtComplemento.Size = new Size(206, 23);
@@ -153,7 +153,7 @@
             // 
             // txtNome
             // 
-            txtNome.Location = new Point(12, 70);
+            txtNome.Location = new Point(357, 70);
             txtNome.Name = "txtNome";
             txtNome.PlaceholderText = "Nome";
             txtNome.Size = new Size(211, 23);
@@ -161,7 +161,7 @@
             // 
             // txtUsuario
             // 
-            txtUsuario.Location = new Point(12, 134);
+            txtUsuario.Location = new Point(357, 160);
             txtUsuario.Name = "txtUsuario";
             txtUsuario.PlaceholderText = "Usuário";
             txtUsuario.Size = new Size(211, 23);
@@ -169,38 +169,28 @@
             // 
             // txtTelefone
             // 
-            txtTelefone.Location = new Point(229, 70);
+            txtTelefone.Location = new Point(577, 70);
             txtTelefone.Name = "txtTelefone";
             txtTelefone.PlaceholderText = "Telefone";
             txtTelefone.Size = new Size(211, 23);
             txtTelefone.TabIndex = 1;
             // 
-            // lblEndereco
+            // pictureBox1
             // 
-            lblEndereco.AutoSize = true;
-            lblEndereco.Location = new Point(12, 177);
-            lblEndereco.Name = "lblEndereco";
-            lblEndereco.Size = new Size(56, 15);
-            lblEndereco.TabIndex = 22;
-            lblEndereco.Text = "Endereço";
-            // 
-            // lblFuncionario
-            // 
-            lblFuncionario.AutoSize = true;
-            lblFuncionario.Location = new Point(12, 27);
-            lblFuncionario.Name = "lblFuncionario";
-            lblFuncionario.Size = new Size(70, 15);
-            lblFuncionario.TabIndex = 23;
-            lblFuncionario.Text = "Funcionário";
+            pictureBox1.Image = Properties.Resources.account_avatar_face_man_people_profile_user_icon_123197__1_;
+            pictureBox1.Location = new Point(38, 2);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(278, 243);
+            pictureBox1.TabIndex = 24;
+            pictureBox1.TabStop = false;
             // 
             // frmUsuário
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.DarkCyan;
-            ClientSize = new Size(800, 450);
-            Controls.Add(lblFuncionario);
-            Controls.Add(lblEndereco);
+            ClientSize = new Size(800, 387);
+            Controls.Add(pictureBox1);
             Controls.Add(txtTelefone);
             Controls.Add(txtUsuario);
             Controls.Add(txtNome);
@@ -219,6 +209,7 @@
             Name = "frmUsuário";
             Text = "Usuário";
             Load += frmUsuário_Load;
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -241,7 +232,6 @@
         private TextBox txtNome;
         private TextBox txtUsuario;
         private TextBox txtTelefone;
-        private Label lblEndereco;
-        private Label lblFuncionario;
+        private PictureBox pictureBox1;
     }
 }

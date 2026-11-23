@@ -54,27 +54,34 @@
             // 
             // btnCadProduto
             // 
+            btnCadProduto.BackgroundImageLayout = ImageLayout.Zoom;
+            btnCadProduto.Image = Properties.Resources.icons8_product_30;
+            btnCadProduto.ImageAlign = ContentAlignment.MiddleLeft;
             btnCadProduto.Location = new Point(23, 142);
             btnCadProduto.Name = "btnCadProduto";
             btnCadProduto.Size = new Size(158, 53);
             btnCadProduto.TabIndex = 2;
             btnCadProduto.Text = "Cadastrar Produto";
+            btnCadProduto.TextImageRelation = TextImageRelation.ImageBeforeText;
             btnCadProduto.UseVisualStyleBackColor = true;
             btnCadProduto.Click += cadProduto_Click;
             // 
             // btnCadFuncionario
             // 
+            btnCadFuncionario.Image = Properties.Resources.icons8_employee_50;
+            btnCadFuncionario.ImageAlign = ContentAlignment.MiddleLeft;
             btnCadFuncionario.Location = new Point(23, 264);
             btnCadFuncionario.Name = "btnCadFuncionario";
             btnCadFuncionario.Size = new Size(158, 53);
             btnCadFuncionario.TabIndex = 3;
             btnCadFuncionario.Text = "Cadastrar Funcionário";
+            btnCadFuncionario.TextImageRelation = TextImageRelation.ImageBeforeText;
             btnCadFuncionario.UseVisualStyleBackColor = true;
             btnCadFuncionario.Click += btnCadFuncionario_Click;
             // 
             // panel2
             // 
-            panel2.BackColor = Color.DarkCyan;
+            panel2.BackColor = SystemColors.HotTrack;
             panel2.Controls.Add(btnCadVenda);
             panel2.Controls.Add(btnDadosUsuario);
             panel2.Controls.Add(btnSair);
@@ -89,16 +96,21 @@
             // 
             // btnCadVenda
             // 
+            btnCadVenda.Image = Properties.Resources.icons8_sell_50;
+            btnCadVenda.ImageAlign = ContentAlignment.MiddleLeft;
             btnCadVenda.Location = new Point(23, 349);
             btnCadVenda.Name = "btnCadVenda";
             btnCadVenda.Size = new Size(158, 53);
             btnCadVenda.TabIndex = 4;
             btnCadVenda.Text = "Cadastrar Venda";
+            btnCadVenda.TextImageRelation = TextImageRelation.ImageBeforeText;
             btnCadVenda.UseVisualStyleBackColor = true;
             btnCadVenda.Click += button1_Click;
             // 
             // btnDadosUsuario
             // 
+            btnDadosUsuario.Image = Properties.Resources.icons8_user_50;
+            btnDadosUsuario.ImageAlign = ContentAlignment.MiddleLeft;
             btnDadosUsuario.Location = new Point(23, 12);
             btnDadosUsuario.Name = "btnDadosUsuario";
             btnDadosUsuario.Size = new Size(158, 53);
@@ -109,6 +121,8 @@
             // 
             // btnSair
             // 
+            btnSair.Image = Properties.Resources.icons8_open_door_50;
+            btnSair.ImageAlign = ContentAlignment.BottomLeft;
             btnSair.Location = new Point(23, 609);
             btnSair.Name = "btnSair";
             btnSair.Size = new Size(158, 53);

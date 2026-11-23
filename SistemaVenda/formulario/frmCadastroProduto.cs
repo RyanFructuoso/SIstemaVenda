@@ -70,6 +70,9 @@ namespace SistemaVenda.View
                     "Erro no Produto",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+
+            this.btnAtualizar.Enabled = false;
+            this.btnExcluir.Enabled = false;
         }
 
         private void carregarProdutos()
