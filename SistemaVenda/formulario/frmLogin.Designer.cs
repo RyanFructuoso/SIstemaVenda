@@ -39,7 +39,7 @@
             // 
             // txtUsuario
             // 
-            txtUsuario.Location = new Point(86, 178);
+            txtUsuario.Location = new Point(63, 180);
             txtUsuario.Name = "txtUsuario";
             txtUsuario.PlaceholderText = "Usuário";
             txtUsuario.Size = new Size(227, 23);
@@ -48,7 +48,7 @@
             // 
             // txtSenha
             // 
-            txtSenha.Location = new Point(86, 218);
+            txtSenha.Location = new Point(63, 215);
             txtSenha.Name = "txtSenha";
             txtSenha.PasswordChar = '*';
             txtSenha.PlaceholderText = "Senha";
@@ -58,7 +58,7 @@
             // 
             // btnAutenticar
             // 
-            btnAutenticar.Location = new Point(136, 268);
+            btnAutenticar.Location = new Point(126, 244);
             btnAutenticar.Name = "btnAutenticar";
             btnAutenticar.Size = new Size(103, 29);
             btnAutenticar.TabIndex = 2;
@@ -77,7 +77,7 @@
             // pictureBox1
             // 
             pictureBox1.Image = Properties.Resources.exit_door_icon_232399;
-            pictureBox1.Location = new Point(115, 25);
+            pictureBox1.Location = new Point(102, 27);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(153, 137);
             pictureBox1.TabIndex = 4;
@@ -88,7 +88,7 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Gray;
-            ClientSize = new Size(393, 321);
+            ClientSize = new Size(348, 321);
             Controls.Add(pictureBox1);
             Controls.Add(lblInfo);
             Controls.Add(btnAutenticar);

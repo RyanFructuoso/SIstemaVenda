@@ -37,7 +37,7 @@ namespace SistemaVenda.View
             int quantidade = Convert.ToInt32(this.txtQuantidade.Text);
 
             //Encapsulando os dados
-            Produto product = new Produto
+            Produto produto = new Produto
             {
                 nome = nome,
                 marca = marca,
@@ -47,7 +47,7 @@ namespace SistemaVenda.View
             // Enviar os dados para a controller
             try
             {
-                bool resp = controller.criarProduto(product);
+                bool resp = controller.criarProduto(produto);
 
                 if (resp)
                 {
@@ -65,7 +65,7 @@ namespace SistemaVenda.View
                 }
             }catch (Exception ex)
             {
-                // mostrar o porque deu erro
+                // mostrar o porquê deu erro
                 MessageBox.Show(ex.Message,
                     "Erro no Produto",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);

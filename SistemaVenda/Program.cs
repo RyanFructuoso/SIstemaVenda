@@ -1,4 +1,6 @@
+using SistemaVenda.controle;
 using SistemaVenda.View;
+using QuestPDF.Infrastructure;
 
 namespace SistemaVenda;
 
@@ -7,9 +9,13 @@ internal static class Program
     [STAThread]
     static void Main()
     {
-        
+
+        QuestPDF.Settings.License = LicenseType.Community;
+
         ApplicationConfiguration.Initialize();
         //Application.Run(new frmCadastroProduto());
+        //Relatorio relatorio = new Relatorio();
+        //relatorio.salvarPdf();
 
         while (true)
         {

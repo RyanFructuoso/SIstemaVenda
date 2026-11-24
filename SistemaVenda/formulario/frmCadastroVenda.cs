@@ -1,4 +1,5 @@
-﻿using SistemaVenda.Controller;
+﻿using SistemaVenda.controle;
+using SistemaVenda.Controller;
 using SistemaVenda.model;
 using System;
 using System.Collections.Generic;
@@ -15,11 +16,13 @@ namespace SistemaVenda.View
         private ProdutoControle produtocontrole;
         private VendaControle vendaController;
         private List<Item> carrinho = new List<Item>();
+        private Relatorio relatorio = new Relatorio();
         public frmCadastroVenda()
         {
             InitializeComponent();
             produtocontrole = new ProdutoControle();
             vendaController = new VendaControle();
+            relatorio = new Relatorio();
         }
 
         private void carregarProdutos()
@@ -161,6 +164,8 @@ namespace SistemaVenda.View
                     carrinho.Clear();
                     frmCadastroVenda_Load(this, EventArgs.Empty);
                     MessageBox.Show("Venda Cadastrada com Sucesso!!");
+                    // Mostrar o cupom de venda!!
+                    relatorio.salvarPdf();
                 }
                 else
                 {
