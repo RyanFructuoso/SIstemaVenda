@@ -11,11 +11,11 @@ using SistemaVenda.model;
 
 namespace SistemaVenda.View
 {
-    public partial class frmPrimary : Form
+    public partial class frmPrincipal : Form
     {
 
         private FuncionarioControle controller;
-        public frmPrimary()
+        public frmPrincipal()
         {
             InitializeComponent();
             controller = new FuncionarioControle();
@@ -24,7 +24,7 @@ namespace SistemaVenda.View
             this.Text += $"- {nome}";
         }
 
-        private void frmPrimary_Load(object sender, EventArgs e)
+        private void frmPrincipal_Load(object sender, EventArgs e)
         {
             bool adm = controller.usuarioAdministrador();
             if (!adm)

@@ -1,6 +1,6 @@
 ﻿namespace SistemaVenda.View
 {
-    partial class frmPrimary
+    partial class frmPrincipal
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmPrimary));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmPrincipal));
             lblCadastros = new Label();
             btnCadProduto = new Button();
             btnCadFuncionario = new Button();
@@ -162,7 +162,7 @@
             painelPrincipal.Size = new Size(799, 646);
             painelPrincipal.TabIndex = 6;
             // 
-            // frmPrimary
+            // frmPrincipal
             // 
             AutoScaleDimensions = new SizeF(96F, 96F);
             AutoScaleMode = AutoScaleMode.Dpi;
@@ -170,13 +170,12 @@
             Controls.Add(painelPrincipal);
             Controls.Add(panel1);
             Controls.Add(panel2);
-            Cursor = Cursors.Cross;
             FormBorderStyle = FormBorderStyle.Fixed3D;
             Icon = (Icon)resources.GetObject("$this.Icon");
             MaximizeBox = false;
-            Name = "frmPrimary";
+            Name = "frmPrincipal";
             Text = "Tela inicial";
-            Load += frmPrimary_Load;
+            Load += frmPrincipal_Load;
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
             panel1.ResumeLayout(false);

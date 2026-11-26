@@ -161,11 +161,12 @@ namespace SistemaVenda.View
                 bool resposta = vendaController.cadastrarVenda(this.carrinho);
                 if (resposta)
                 {
-                    carrinho.Clear();
                     frmCadastroVenda_Load(this, EventArgs.Empty);
                     MessageBox.Show("Venda Cadastrada com Sucesso!!");
                     // Mostrar o cupom de venda!!
-                    relatorio.salvarPdf();
+                    var documento = relatorio.gerarNota(carrinho);
+                    relatorio.salvarPdf(documento);
+                    carrinho.Clear();
                 }
                 else
                 {
