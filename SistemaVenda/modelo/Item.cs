@@ -6,9 +6,9 @@ namespace SistemaVenda.model
 {
     internal class Item
     {
-        public int id_item {  get; set; }
+        public int cod_itens {  get; set; }
         public int cod_produto { get; set; }
-        public int id_venda { get; set; }
+        public int cod_venda { get; set; }
         public int preco { get; set; }
         public int quantidade { get; set; }
 

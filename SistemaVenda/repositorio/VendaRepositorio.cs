@@ -3,6 +3,7 @@ using SistemaVenda.database;
 using SistemaVenda.model;
 using System;
 using System.Collections.Generic;
+using System.Reflection.Metadata.Ecma335;
 using System.Runtime.InteropServices;
 using System.Text;
 
@@ -42,7 +43,7 @@ namespace SistemaVenda.repository
                 using var cmdVenda = new MySqlCommand(sqlVenda, conector, transacao);
                 cmdVenda.Parameters.AddWithValue("@cod_funcionario", venda.cod_funcionario);
                 cmdVenda.ExecuteNonQuery();
-                venda.cod_vendas = (int)cmdVenda.LastInsertedId;
+                venda.cod_venda = (int)cmdVenda.LastInsertedId;
 
                 // Registrar os itens
                 foreach (var item in venda.itens)
@@ -52,7 +53,7 @@ namespace SistemaVenda.repository
                                       VALUES
                                       (@cod_venda, @cod_produto, @quantidade, @preco)";
                     using MySqlCommand cmdItem = new MySqlCommand(sqlItens, conector, transacao);
-                    cmdItem.Parameters.AddWithValue("cod_venda", venda.cod_vendas);
+                    cmdItem.Parameters.AddWithValue("cod_venda", venda.cod_venda);
                     cmdItem.Parameters.AddWithValue("cod_produto", item.cod_produto);
                     cmdItem.Parameters.AddWithValue("quantidade", item.quantidade);
                     cmdItem.Parameters.AddWithValue("preco", item.preco);
@@ -88,5 +89,69 @@ namespace SistemaVenda.repository
             }
 
         }
+
+        public List<Venda> listarVendasMes(int mes, int ano)
+        {
+            DateTime dataInicial = new DateTime(ano, mes, 1);
+            DateTime dataFinal = dataInicial.AddMonths(1);
+
+            string sql = @"SELECT 
+	        venda. *,
+            funcionario.nome AS nome_funcionario,
+            itens. *,
+            produto.nome,
+            produto.marca
+            FROM venda
+            JOIN funcionario
+	            ON funcionario.cod_funcionario = venda.cod_funcionario
+            JOIN itens
+	            ON itens.cod_venda = venda.cod_venda
+            JOIN produto
+ 	            ON produto.cod_produto = itens.cod_produto
+            WHERE venda.data >= @dataInicial AND venda.data < @dataFinal
+            ORDER BY venda.data, venda.cod_venda, produto.cod_produto;";
+
+            using MySqlConnection conexao = BancoDeDados.conexao();
+            using MySqlCommand comando = new MySqlCommand(sql, conexao);
+            comando.Parameters.AddWithValue("@dataInicial", dataInicial);
+            comando.Parameters.AddWithValue("@dataFinal", dataFinal);
+
+            MySqlDataReader cursor = comando.ExecuteReader();
+            List<Venda> listaDeVenda = new List<Venda>();
+
+
+            while (cursor.Read())
+            {
+                int cod_venda = cursor.GetInt32("cod_venda");
+                Venda? venda = listaDeVenda.Find(v => v.cod_venda == cod_venda);
+                if (venda == null)
+                {
+                    venda = new Venda()
+                    {
+                        cod_venda = cursor.GetInt32("cod_venda"),
+                        cod_funcionario = cursor.GetInt32("cod_funcionario"),
+                        data = cursor.GetDateTime("data"),
+                        nomeFuncionario = cursor.GetString("nome_funcionario")
+                    };
+                    listaDeVenda.Add(venda);
+                }
+                if (!cursor.IsDBNull(cursor.GetOrdinal("cod_itens")))
+                {
+                    Item item = new Item
+                    {
+                        cod_itens = cursor.GetInt32("cod_itens"),
+                        cod_venda = cod_venda,
+                        cod_produto = cursor.GetInt32("cod_produto"),
+                        quantidade = cursor.GetInt32("quantidade"),
+                        preco = cursor.GetInt32("preco"),
+                        nomeProduto = cursor.GetString("nome"),
+                        marcaProduto = cursor.GetString("marca")
+                    };
+                    venda.itens.Add(item);
+                }
+            }
+            return listaDeVenda;
+        }
+        
     }
 }
